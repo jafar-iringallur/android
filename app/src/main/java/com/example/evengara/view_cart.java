@@ -1,11 +1,15 @@
 package com.example.evengara;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -15,16 +19,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
-import com.example.evengara.databinding.ActivityCustomerHomeBinding;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,35 +26,26 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class customer_home extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-
-    private ActivityCustomerHomeBinding binding;
-    ListView lv;
-String [] shopid,name,contact,email,loginid;
+public class view_cart extends AppCompatActivity implements View.OnClickListener {
+    ListView cart;
+    Button order;
+    String [] prdid,name,image,price,qty,cartid,total;
+    float sumtotal=0;
+    TextView tt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_view_cart);
+        cart=(ListView) findViewById(R.id.view_cart);
+        order=(Button) findViewById(R.id.button7);
+        order.setOnClickListener(this);
+        tt=(TextView)findViewById(R.id.textView53) ;
 
-        binding = ActivityCustomerHomeBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
-     //   NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_customer_home);
-      //  NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-      //  NavigationUI.setupWithNavController(binding.navView, navController);
-
-        navView.setOnNavigationItemSelectedListener(this);
-lv=(ListView) findViewById(R.id.lbb);
         SharedPreferences sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         final String maclis=sh.getString("mac_list","");
         String uid=sh.getString("uid","");
         String hu = sh.getString("ip", "");
-        String url = "http://" + hu + ":5000/android_view_shops";
+        String url = "http://" + hu + ":5000/android_view_cart";
 
 
 
@@ -79,25 +64,34 @@ lv=(ListView) findViewById(R.id.lbb);
                                 JSONArray js= jsonObj.getJSONArray("data");
 
                                 name=new String[js.length()];
-                                shopid=new String[js.length()];
-                                contact=new String[js.length()];
-                                email=new String[js.length()];
-                                loginid=new String[js.length()];
+                                prdid=new String[js.length()];
+                                price=new String[js.length()];
+                                image=new String[js.length()];
+
+                                qty=new String[js.length()];
+                                cartid=new String[js.length()];
+                                total=new String[js.length()];
+
 
                                 for(int i=0;i<js.length();i++)
                                 {
                                     JSONObject u=js.getJSONObject(i);
 
                                     name[i]=u.getString("name");
-                                    shopid[i]=u.getString("shopid");
-                                    contact[i]=u.getString("contact");
-                                    email[i]=u.getString("email");
-                                    loginid[i]=u.getString("loginid");
+                                    prdid[i]=u.getString("prdid");
+                                    price[i]=u.getString("price");
+                                    image[i]=u.getString("image");
+
+qty[i]=u.getString("qty");
+                                    total[i]=u.getString("total");
+                                    cartid[i]=u.getString("cartid");
 
 
+sumtotal=sumtotal+(Float.parseFloat(total[i]));
 
                                 }
-                 lv.setAdapter(new Custom_view_shops(getApplicationContext(),shopid,name,contact,email,loginid));
+                                cart.setAdapter(new Custom_view_cart(getApplicationContext(),prdid,name,image,price,qty,cartid,total));
+                            tt.setText(sumtotal+"");
                             }
 
 
@@ -123,7 +117,7 @@ lv=(ListView) findViewById(R.id.lbb);
             protected Map<String, String> getParams() {
                 SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                 Map<String, String> params = new HashMap<String, String>();
-
+                params.put("lid",sh.getString("lid",""));
 
                 return params;
             }
@@ -139,28 +133,8 @@ lv=(ListView) findViewById(R.id.lbb);
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id=item.getItemId();
-        if(id==R.id.navigation_home)
-        {
-            Intent ij = new Intent(getApplicationContext(), set_ip.class);
-            startActivity(ij);
-        }
-        if(id==R.id.navigation_cart)
-        {
-            Intent ij = new Intent(getApplicationContext(), view_cart.class);
-            startActivity(ij);
-        }
-        if(id==R.id.navigation_search)
-        {
-            Intent ij = new Intent(getApplicationContext(), signup.class);
-            startActivity(ij);
-        }
-        if(id==R.id.navigation_account)
-        {
-            Intent ij = new Intent(getApplicationContext(), view_profile.class);
-            startActivity(ij);
-        }
-        return false;
+    public void onClick(View v) {
+        Intent ij = new Intent(getApplicationContext(), conform_address.class);
+        startActivity(ij);
     }
 }

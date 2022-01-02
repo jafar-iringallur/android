@@ -7,7 +7,7 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:layout_height="match_parent"
-    tools:context=".view_profile">
+    tools:context=".conform_address">
 
     <TableRow
         android:layout_width="match_parent"
@@ -21,11 +21,14 @@
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="161dp" />
 
-        <TextView
-            android:id="@+id/textView32"
+        <EditText
+            android:id="@+id/editTextTextPersonName16"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="TextView" />
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
     </TableRow>
 
     <TableRow
@@ -40,11 +43,14 @@
             tools:layout_editor_absoluteX="146dp"
             tools:layout_editor_absoluteY="210dp" />
 
-        <TextView
-            android:id="@+id/textView33"
+        <EditText
+            android:id="@+id/editTextTextPersonName17"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="TextView" />
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
     </TableRow>
 
     <TableRow
@@ -59,11 +65,14 @@
             tools:layout_editor_absoluteX="139dp"
             tools:layout_editor_absoluteY="298dp" />
 
-        <TextView
-            android:id="@+id/textView34"
+        <EditText
+            android:id="@+id/editTextTextPersonName18"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="TextView" />
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
     </TableRow>
 
     <TableRow
@@ -78,11 +87,14 @@
             tools:layout_editor_absoluteX="150dp"
             tools:layout_editor_absoluteY="256dp" />
 
-        <TextView
-            android:id="@+id/textView35"
+        <EditText
+            android:id="@+id/editTextTextPersonName19"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="TextView" />
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
     </TableRow>
 
     <TableRow
@@ -97,11 +109,14 @@
             tools:layout_editor_absoluteX="345dp"
             tools:layout_editor_absoluteY="581dp" />
 
-        <TextView
-            android:id="@+id/textView37"
+        <EditText
+            android:id="@+id/editTextTextPersonName20"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="TextView" />
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
     </TableRow>
 
     <TableRow
@@ -116,12 +131,26 @@
             tools:layout_editor_absoluteX="170dp"
             tools:layout_editor_absoluteY="356dp" />
 
-        <TextView
-            android:id="@+id/textView36"
+        <EditText
+            android:id="@+id/editTextTextPersonName21"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text="TextView" />
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
 
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:text="Confirm" />
     </TableRow>
 
 </LinearLayout>

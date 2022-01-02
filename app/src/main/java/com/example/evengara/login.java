@@ -81,7 +81,7 @@ public class login extends AppCompatActivity implements View.OnClickListener {
                                         startActivity(ij);
                                     }
                                     if(jsonObj.getString("type").equalsIgnoreCase("customer")) {
-                                        Intent ij = new Intent(getApplicationContext(), view_profile.class);
+                                        Intent ij = new Intent(getApplicationContext(), customer_home.class);
                                         startActivity(ij);
                                     }
                                 } else {

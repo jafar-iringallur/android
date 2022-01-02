@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
-    tools:context=".product_details">
+    tools:context=".add_to_cart">
 
     <TableRow
         android:layout_width="match_parent"
@@ -139,16 +139,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
+        <TextView
+            android:id="@+id/textView54"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:text="Qty" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName15"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:ems="10"
+            android:hint="qty"
+            android:inputType="textPersonName" />
+
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/button6a"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
 
-            android:text="Add to Cart"
-            app:layout_constraintEnd_toStartOf="@+id/button6a"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
+            android:text="Add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button5"
+            app:layout_constraintTop_toTopOf="parent" />
     </TableRow>
 
 </LinearLayout>

@@ -13,10 +13,18 @@
         android:theme="@style/Theme.Evengara"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".conform_address"
+            android:exported="true" />
+        <activity
+            android:name=".view_cart"
+            android:exported="true" />
+        <activity
+            android:name=".add_to_cart"
+            android:exported="true" />
+        <activity
             android:name=".customer_home"
             android:exported="true"
-            android:label="@string/title_activity_customer_home">
-        </activity>
+            android:label="@string/title_activity_customer_home" />
         <activity
             android:name=".boy_order_details"
             android:exported="true" />
@@ -77,7 +85,7 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
