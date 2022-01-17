@@ -1,10 +1,13 @@
 package com.example.evengara;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -19,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -26,26 +30,41 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class shop_details extends AppCompatActivity {
+public class shop_details extends AppCompatActivity implements View.OnClickListener {
     TextView name;
     TextView address;
     TextView contact;
     RatingBar rating;
-
+FloatingActionButton btn;
     ListView review;
+    ListView list;
+    TextView r;
+    ConstraintLayout no;
     String [] revie,rat,date,cname;
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+
+        Intent ij=new Intent(getApplicationContext(),customer_home.class);
+        startActivity(ij);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_details);
-        name=(TextView) findViewById(R.id.textView41);
-        address=(TextView) findViewById(R.id.textView42);
+        name=(TextView) findViewById(R.id.textView42);
+        address=(TextView) findViewById(R.id.textView14);
         contact=(TextView) findViewById(R.id.textView43);
-
+        r=(TextView) findViewById(R.id.textView12);
         rating=(RatingBar) findViewById(R.id.ratingBar2);
         review=(ListView)findViewById(R.id.review) ;
+        no=(ConstraintLayout) findViewById(R.id.no);
+        no.setVisibility(View.GONE);
+btn=(FloatingActionButton) findViewById(R.id.floatingActionButton10) ;
+btn.setOnClickListener(this);
 
 
 
@@ -73,6 +92,7 @@ public class shop_details extends AppCompatActivity {
 
 float a=Float.parseFloat(jsonObj.getString("rat"));
 rating.setRating(a);
+r.setText("( " +jsonObj.getString("rat")+ " )");
 
 
 
@@ -93,7 +113,7 @@ rating.setRating(a);
                                     revie[i]=u.getString("review");
                                     rat[i]=u.getString("rating");
                                     date[i]=u.getString("date");
-                                   cname[i]=u.getString("cname");
+                                    cname[i]=u.getString("cname");
 //                                    type[i]=u.getString("type");
 //                                    discription[i]=u.getString("description");
 //                                    image[i]=u.getString("image");
@@ -101,11 +121,16 @@ rating.setRating(a);
 
 
                                 }
+                                if(revie.length>0) {
 
 
-
-review.setAdapter(new Custom_view_review(getApplicationContext(),revie,rat,date,cname));
-
+                                    review.setAdapter(new Custom_view_review(getApplicationContext(), revie, rat, date, cname));
+                                }
+                                else
+                                {
+                                    review.setVisibility(View.INVISIBLE);
+                                    no.setVisibility(View.VISIBLE);
+                                }
 
                             } else {
                                 Toast.makeText(getApplicationContext(),"Invalid username or password...",Toast.LENGTH_LONG).show();
@@ -133,7 +158,7 @@ review.setAdapter(new Custom_view_review(getApplicationContext(),revie,rat,date,
                 Map<String, String> params = new HashMap<>();
 
                 params.put("lid", sh.getString("shopid",""));
-
+                params.put("type","shop");
 
 
                 return params;
@@ -146,5 +171,15 @@ review.setAdapter(new Custom_view_review(getApplicationContext(),revie,rat,date,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(postRequest);
+    }
+
+    @Override
+    public void onClick(View v) {
+        SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor ed = sh.edit();
+        ed.putString("type", "shop");
+        ed.commit();
+        Intent ij = new Intent(getApplicationContext(), send_review.class);
+        startActivity(ij);
     }
 }

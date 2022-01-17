@@ -1,6 +1,7 @@
 package com.example.evengara;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,9 +31,21 @@ import java.util.Map;
 public class view_cart extends AppCompatActivity implements View.OnClickListener {
     ListView cart;
     Button order;
-    String [] prdid,name,image,price,qty,cartid,total;
+    String [] prdid,name,image,price,qty,cartid,total,shop;
     float sumtotal=0;
     TextView tt;
+    Button add;
+    ConstraintLayout empty;
+    LinearLayout car;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+
+        Intent ij=new Intent(getApplicationContext(),customer_home.class);
+        startActivity(ij);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +54,10 @@ public class view_cart extends AppCompatActivity implements View.OnClickListener
         order=(Button) findViewById(R.id.button7);
         order.setOnClickListener(this);
         tt=(TextView)findViewById(R.id.textView53) ;
+        add=(Button) findViewById(R.id.button5) ;
+        empty=(ConstraintLayout) findViewById(R.id.empty);
+        car=(LinearLayout) findViewById(R.id.cart);
+        empty.setVisibility(View.GONE);
 
         SharedPreferences sh= PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         final String maclis=sh.getString("mac_list","");
@@ -71,7 +89,7 @@ public class view_cart extends AppCompatActivity implements View.OnClickListener
                                 qty=new String[js.length()];
                                 cartid=new String[js.length()];
                                 total=new String[js.length()];
-
+                                shop=new String[js.length()];
 
                                 for(int i=0;i<js.length();i++)
                                 {
@@ -86,12 +104,28 @@ qty[i]=u.getString("qty");
                                     total[i]=u.getString("total");
                                     cartid[i]=u.getString("cartid");
 
-
+                                    shop[i]=u.getString("shop");
 sumtotal=sumtotal+(Float.parseFloat(total[i]));
 
                                 }
-                                cart.setAdapter(new Custom_view_cart(getApplicationContext(),prdid,name,image,price,qty,cartid,total));
-                            tt.setText(sumtotal+"");
+                                if(name.length>0) {
+                                    cart.setAdapter(new Custom_view_cart(getApplicationContext(),prdid,name,image,price,qty,cartid,total,shop));
+                                    tt.setText(sumtotal+"");
+                                }
+                                else {
+                                    car.setVisibility(View.INVISIBLE);
+                                    empty.setVisibility(View.VISIBLE);
+                                    add.setOnClickListener(new View.OnClickListener() {
+
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent ij=new Intent(getApplicationContext(),all_products.class);
+                                            startActivity(ij);
+
+                                        }
+                                    });
+                                }
+
                             }
 
 
@@ -134,6 +168,11 @@ sumtotal=sumtotal+(Float.parseFloat(total[i]));
 
     @Override
     public void onClick(View v) {
+        String sum=tt.getText().toString();
+        SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor ed = sh.edit();
+        ed.putString("sumtotal", sum);
+        ed.commit();
         Intent ij = new Intent(getApplicationContext(), conform_address.class);
         startActivity(ij);
     }

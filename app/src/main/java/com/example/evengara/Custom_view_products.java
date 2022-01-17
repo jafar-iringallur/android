@@ -17,14 +17,14 @@ import com.squareup.picasso.Picasso;
 
 public class Custom_view_products extends BaseAdapter {
 
-    String [] prdid,name,image,price;
+    String [] prdid,pname,image,price;
     private Context context;
 
-    public Custom_view_products(Context cc,String[]prdid,String[]name,String[]image,String[]price)
+    public Custom_view_products(Context cc,String[]prdid,String[]pname,String[]image,String[]price)
     {
         this.context=cc;
         this.prdid=prdid;
-        this.name=name;
+        this.pname=pname;
         this.image=image;
         this.price=price;
     }
@@ -60,11 +60,11 @@ public class Custom_view_products extends BaseAdapter {
             gridView=(View)view;
 
         }
-       ImageView tv1=(ImageView) gridView.findViewById(R.id.imageView4);
+       ImageView tv1=(ImageView) gridView.findViewById(R.id.imageView5);
         TextView tv2=(TextView)gridView.findViewById(R.id.textView49);
         TextView tv3=(TextView)gridView.findViewById(R.id.textView50);
         Button btn1=(Button)gridView.findViewById(R.id.button12) ;
-        Button btn2=(Button)gridView.findViewById(R.id.button13) ;
+
 btn1.setTag(prdid[i]);
 btn1.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -79,22 +79,9 @@ btn1.setOnClickListener(new View.OnClickListener() {
         context.startActivity(ij);
     }
 });
-        btn2.setTag(prdid[i]);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences sh=PreferenceManager.getDefaultSharedPreferences(context);
-                SharedPreferences.Editor ed=sh.edit();
-                ed.putString("prdid",v.getTag().toString());
-                ed.commit();
 
-                Intent ij=new Intent(context,add_to_cart.class);
-                ij.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(ij);
-            }
-        });
         tv2.setTextColor(Color.BLACK);
-        tv2.setText(name[i]);
+        tv2.setText(pname[i]);
         tv3.setTextColor(Color.BLACK);
         tv3.setText(price[i]);
         SharedPreferences sh= PreferenceManager.getDefaultSharedPreferences(context);

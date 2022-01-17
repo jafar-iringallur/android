@@ -2,10 +2,17 @@ package com.example.evengara;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +23,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.tabs.TabLayout;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
@@ -30,6 +39,15 @@ public class view_profile extends AppCompatActivity {
     TextView contact;
     TextView email;
 
+    TabLayout tab;
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+
+        Intent ij=new Intent(getApplicationContext(),customer_home.class);
+        startActivity(ij);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +58,41 @@ public class view_profile extends AppCompatActivity {
         pin=(TextView) findViewById(R.id.textView34);
         contact=(TextView) findViewById(R.id.textView36);
         email=(TextView) findViewById(R.id.textView37);
+        tab=(TabLayout) findViewById(R.id.tab) ;
+
+
+        tab.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                if(tab.getPosition()==0)
+                {
+                    Intent ij = new Intent(getApplicationContext(), view_profile.class);
+                    startActivity(ij);
+                }
+                else if(tab.getPosition()==1)
+                {
+                    Intent ij = new Intent(getApplicationContext(), view_order_main.class);
+                    startActivity(ij);
+                }
+                else if(tab.getPosition()==2)
+                {
+                    Intent ij = new Intent(getApplicationContext(), Test.class);
+                    startActivity(ij);
+                }
+
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
 
         SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -106,4 +159,5 @@ public class view_profile extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(postRequest);
     }
+
 }

@@ -9,15 +9,33 @@
     android:layout_height="match_parent"
     tools:context=".conform_address">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+android:paddingLeft="10dp"
+        android:background="@drawable/rounded">
+
+    <TextView
+        android:id="@+id/textView74"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="Delivery Address:" />
+
     <TableRow
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="120dp"
+            android:layout_width="50dp"
             android:layout_height="40dp"
             android:text="Name"
+
             app:layout_constraintStart_toStartOf="parent"
             tools:layout_editor_absoluteY="161dp" />
 
@@ -37,7 +55,7 @@
 
         <TextView
             android:id="@+id/textView7"
-            android:layout_width="120dp"
+            android:layout_width="50dp"
             android:layout_height="40dp"
             android:text="Place"
             tools:layout_editor_absoluteX="146dp"
@@ -59,7 +77,7 @@
 
         <TextView
             android:id="@+id/textView9"
-            android:layout_width="120dp"
+            android:layout_width="50dp"
             android:layout_height="40dp"
             android:text="Pin"
             tools:layout_editor_absoluteX="139dp"
@@ -81,7 +99,7 @@
 
         <TextView
             android:id="@+id/textView8"
-            android:layout_width="120dp"
+            android:layout_width="50dp"
             android:layout_height="40dp"
             android:text="Post"
             tools:layout_editor_absoluteX="150dp"
@@ -103,9 +121,9 @@
 
         <TextView
             android:id="@+id/textView11"
-            android:layout_width="120dp"
+            android:layout_width="50dp"
             android:layout_height="40dp"
-            android:text="Email"
+            android:text="Contact"
             tools:layout_editor_absoluteX="345dp"
             tools:layout_editor_absoluteY="581dp" />
 
@@ -118,28 +136,133 @@
             android:text="Name" />
 
     </TableRow>
-
+    </LinearLayout>
     <TableRow
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="50dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/rounded">
 
         <TextView
-            android:id="@+id/textView10"
-            android:layout_width="120dp"
+            android:id="@+id/textView75"
+            android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="Contact"
-            tools:layout_editor_absoluteX="170dp"
-            tools:layout_editor_absoluteY="356dp" />
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="Payment" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName21"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </TableRow>
+            <TextView
+                android:id="@+id/textView78"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:text="Amount :" />
+
+            <TextView
+                android:id="@+id/textView114"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="@string/Rs" />
+
+            <TextView
+                android:id="@+id/textView79"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textColor="@color/black" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textView113"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="Method:" />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:text="Online" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="COD" />
+            </RadioGroup>
+        </TableRow>
+
+        <LinearLayout
+            android:id="@+id/bank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView76"
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:text="Acc No:" />
+
+                <EditText
+                    android:id="@+id/editTextTextPersonName23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+
+                    android:hint="Acc No"
+                    android:inputType="textPersonName" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView77"
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:text="Password" />
+
+                <EditText
+                    android:id="@+id/editTextTextPassword2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+
+                    android:ems="10"
+                    android:hint="password"
+                    android:inputType="textPassword" />
+
+            </TableRow>
+        </LinearLayout>
+    </LinearLayout>
 
     <TableRow
         android:layout_width="match_parent"

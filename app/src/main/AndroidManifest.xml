@@ -6,12 +6,33 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/shop"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/shop"
         android:supportsRtl="true"
         android:theme="@style/Theme.Evengara"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".all_products"
+            android:exported="true" />
+        <activity
+            android:name=".chat_sample"
+            android:exported="true" />
+        <activity
+            android:name=".chat"
+            android:exported="true" />
+        <activity
+            android:name=".view_order_main"
+            android:exported="true" />
+        <activity
+            android:name=".payment"
+            android:exported="true" />
+        <activity
+            android:name=".boy_home"
+            android:exported="true" />
+        <activity
+            android:name=".view_order"
+            android:exported="true" />
         <activity
             android:name=".conform_address"
             android:exported="true" />
@@ -21,6 +42,7 @@
         <activity
             android:name=".add_to_cart"
             android:exported="true" />
+        <activity android:name=".Test" />
         <activity
             android:name=".customer_home"
             android:exported="true"
@@ -29,11 +51,9 @@
             android:name=".boy_order_details"
             android:exported="true" />
         <activity
-            android:name=".boy_view_orders"
-            android:exported="true" />
-        <activity
             android:name=".boy_view_profile"
             android:exported="true" />
+        <activity android:name=".bot" />
         <activity
             android:name=".set_ip"
             android:exported="true">
@@ -79,10 +99,12 @@
             android:label="@string/title_activity_view_profile" />
         <activity
             android:name=".signup"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
             android:name=".login"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />

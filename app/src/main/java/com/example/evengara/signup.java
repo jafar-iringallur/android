@@ -58,69 +58,95 @@ public class signup extends AppCompatActivity implements View.OnClickListener {
             String customer_pin=pin.getText().toString();
             String customer_contact=contact.getText().toString();
             String customer_email=email.getText().toString();
+            if(customer_name.length()==0)
+            {
+                name.setError("Missing");
+            }
+            else if(customer_place.length()==0)
+            {
+                place.setError("Missing");
+            }
+            else if(customer_post.length()==0)
+            {
+                post.setError("Missing");
+            }
+            else if(customer_pin.length()==0)
+            {
+                pin.setError("Missing");
+            }
+            else if(customer_contact.length()==0)
+            {
+                contact.setError("Missing");
+            }
+            else if(customer_email.length()==0)
+            {
+                email.setError("Missing");
+            }
+            else {
 
-            SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            String ip = sh.getString("ip", "");
-            String url = "http://" + ip + ":5000/android_signup";
 
-            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-            StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                    new Response.Listener<String>()
-                    {
-                        @Override
-                        public void onResponse(String response) {
-                            try {
-                                JSONObject jsonObj = new JSONObject(response);
-                                String sucs = jsonObj.getString("status");
-                                if (sucs.equalsIgnoreCase("ok")) {
-                                    Toast.makeText(getApplicationContext(),"Registerd Successfully",Toast.LENGTH_LONG).show();
-                                    Intent ij = new Intent(getApplicationContext(), login.class);
-                                    startActivity(ij);
+                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                String ip = sh.getString("ip", "");
+                String url = "http://" + ip + ":5000/android_signup";
+
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                try {
+                                    JSONObject jsonObj = new JSONObject(response);
+                                    String sucs = jsonObj.getString("status");
+                                    if (sucs.equalsIgnoreCase("ok")) {
+                                        Toast.makeText(getApplicationContext(), "Registerd Successfully", Toast.LENGTH_LONG).show();
+                                        Intent ij = new Intent(getApplicationContext(), login.class);
+                                        startActivity(ij);
 
 
-                                } else {
-                                    Toast.makeText(getApplicationContext(),"Registration Faild",Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), "Registration Faild", Toast.LENGTH_LONG).show();
+
+                                    }
+                                } catch (Exception e) {
+
+
+                                    Toast.makeText(getApplicationContext(), "eeeee" + e.toString(), Toast.LENGTH_LONG).show();
 
                                 }
-                            } catch (Exception e) {
-
-
-                                Toast.makeText(getApplicationContext(),"eeeee"+e.toString(),Toast.LENGTH_LONG).show();
-
+                            }
+                        },
+                        new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                // error
+                                Toast.makeText(getApplicationContext(), "eeeee" + error.toString(), Toast.LENGTH_SHORT).show();
                             }
                         }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            // error
-                            Toast.makeText(getApplicationContext(), "eeeee" + error.toString(), Toast.LENGTH_SHORT).show();
-                        }
+                ) {
+                    @Override
+                    protected Map<String, String> getParams() {
+                        SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                        Map<String, String> params = new HashMap<>();
+
+                        params.put("name", customer_name);
+                        params.put("place", customer_place);
+                        params.put("post", customer_post);
+                        params.put("pin", customer_pin);
+                        params.put("contact", customer_contact);
+                        params.put("email", customer_email);
+
+
+                        return params;
                     }
-            ) {
-                @Override
-                protected Map<String, String> getParams() {
-                    SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                    Map<String, String> params = new HashMap<>();
+                };
+                int MY_SOCKET_TIMEOUT_MS = 100000;
 
-                    params.put("name", customer_name);
-                    params.put("place", customer_place);
-                    params.put("post", customer_post);
-                    params.put("pin", customer_pin);
-                    params.put("contact", customer_contact);
-                    params.put("email", customer_email);
-
-
-                    return params;
-                }
-            };
-            int MY_SOCKET_TIMEOUT_MS = 100000;
-
-            postRequest.setRetryPolicy(new DefaultRetryPolicy(
-                    MY_SOCKET_TIMEOUT_MS,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            requestQueue.add(postRequest);
+                postRequest.setRetryPolicy(new DefaultRetryPolicy(
+                        MY_SOCKET_TIMEOUT_MS,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                requestQueue.add(postRequest);
+            }
 
         }
 

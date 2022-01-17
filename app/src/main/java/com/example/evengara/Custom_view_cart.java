@@ -30,10 +30,10 @@ import java.util.Map;
 
 public class Custom_view_cart extends BaseAdapter {
 
-    String [] prdid,name,image,price,qty,cartid,total;
+    String [] prdid,name,image,price,qty,cartid,total,shop;
     private Context context;
 
-    public Custom_view_cart(Context cc,String[]prdid,String[]name,String[]image,String[]price,String[]qty,String[]cartid,String[]total)
+    public Custom_view_cart(Context cc,String[]prdid,String[]name,String[]image,String[]price,String[]qty,String[]cartid,String[]total,String[]shop)
     {
         this.context=cc;
         this.prdid=prdid;
@@ -43,6 +43,7 @@ public class Custom_view_cart extends BaseAdapter {
         this.qty=qty;
         this.cartid=cartid;
         this.total=total;
+        this.shop=shop;
     }
     @Override
     public int getCount() {
@@ -80,6 +81,7 @@ public class Custom_view_cart extends BaseAdapter {
         TextView tv2=(TextView)gridView.findViewById(R.id.textView);
         TextView tv3=(TextView)gridView.findViewById(R.id.textView47);
         TextView tv4=(TextView)gridView.findViewById(R.id.textView48);
+        TextView tv6=(TextView)gridView.findViewById(R.id.textView110);
         Button btn1=(Button)gridView.findViewById(R.id.button6) ;
         TextView tv5=(TextView) gridView.findViewById(R.id.textView57) ;
 
@@ -158,6 +160,7 @@ public class Custom_view_cart extends BaseAdapter {
         tv4.setTextColor(Color.BLACK);
         tv4.setText(qty[i]);
         tv5.setText(total[i]);
+        tv6.setText(shop[i]);
         SharedPreferences sh= PreferenceManager.getDefaultSharedPreferences(context);
         String ip=sh.getString("ip","");
 

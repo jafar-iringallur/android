@@ -9,6 +9,7 @@
     <EditText
         android:id="@+id/editTextTextPersonName13"
         android:layout_width="wrap_content"
+        android:background="@drawable/rounded"
         android:layout_height="wrap_content"
         android:layout_marginStart="91dp"
         android:layout_marginTop="247dp"

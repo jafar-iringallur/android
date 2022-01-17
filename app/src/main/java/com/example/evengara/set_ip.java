@@ -14,7 +14,14 @@ public class set_ip extends AppCompatActivity implements View.OnClickListener {
     EditText ip;
     Button btn;
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent homeIntent = new Intent(Intent.ACTION_MAIN);
+        homeIntent.addCategory( Intent.CATEGORY_HOME );
+        homeIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(homeIntent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +37,19 @@ public class set_ip extends AppCompatActivity implements View.OnClickListener {
         if(view==btn)
         {
             String ipaddr=ip.getText().toString();
-            SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            SharedPreferences.Editor ed = sh.edit();
-            ed.putString("ip", ipaddr);
-            ed.commit();
+            if(ipaddr.length()==0)
+            {
+                ip.setError("Missing");
+            }
+            else {
+                SharedPreferences sh = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                SharedPreferences.Editor ed = sh.edit();
+                ed.putString("ip", ipaddr);
+                ed.commit();
 
-            Intent ij = new Intent(getApplicationContext(), login.class);
-            startActivity(ij);
-
+                Intent ij = new Intent(getApplicationContext(), login.class);
+                startActivity(ij);
+            }
         }
     }
 }

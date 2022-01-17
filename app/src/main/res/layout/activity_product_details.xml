@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,148 +8,277 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
-    tools:context=".product_details">
+    >
 
-    <TableRow
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">>
 
-        <ImageView
-            android:id="@+id/imageViewa"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="155dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="156dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_background" />
-    </TableRow>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
 
-        <TextView
-            android:id="@+id/textViewa"
-            android:layout_width="121dp"
-            android:layout_height="41dp"
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
-            android:text="Product "
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewa" />
+                android:gravity="center_horizontal|center_vertical">
 
-        <TextView
-            android:id="@+id/textView47a"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:text="TextView" />
-    </TableRow>
+                <ImageView
+                    android:id="@+id/imageViewa"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_launcher_background" />
+            </TableRow>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
+                <TextView
+                    android:id="@+id/textView47a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+            </TableRow>
 
-            android:text="Description"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.23"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp">
 
-        <TextView
-            android:id="@+id/textView48a"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:text="TextView" />
-    </TableRow>
+                <TextView
+                    android:id="@+id/textView48a"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView" />
+            </TableRow>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
+                <TextView
+                    android:id="@+id/textView41"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Rs"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
 
-            android:text="Price"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewa" />
+                <TextView
+                    android:id="@+id/textView51a"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="@color/black"
+                    android:textSize="18dp" />
 
-        <TextView
-            android:id="@+id/textView51a"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:text="TextView" />
-    </TableRow>
+            </TableRow>
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp">
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    app:srcCompat="@drawable/ic_baseline_store_24" />
 
-            android:text="Made Date"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                <TextView
+                    android:id="@+id/textView112"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="TextView" />
+            </TableRow>
 
-        <TextView
-            android:id="@+id/textView52a"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:text="TextView" />
-    </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp">
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+                <RatingBar
+                    android:id="@+id/ratingBar4"
+                    style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
+                <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="3dp"
+                    android:text="TextView" />
+            </TableRow>
 
-            android:text="Exp Date"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp">
 
-        <TextView
-            android:id="@+id/textView53a"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:text="TextView" />
-    </TableRow>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_gravity="top"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/round"
+                    android:gravity="bottom|top"
+                    android:orientation="horizontal"
+                    android:paddingTop="4dp">
 
-    <TableRow
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+                    <ImageView
+                        android:id="@+id/min"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="10dp"
 
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
+                        app:srcCompat="@drawable/ic_baseline_remove_24" />
 
-            android:text="Add to Cart"
-            app:layout_constraintEnd_toStartOf="@+id/button6a"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                    <EditText
+                        android:id="@+id/qty"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="#00000000"
+                        android:ems="10"
+                        android:inputType="number"
+                        android:paddingLeft="4dp"
+                        android:text="1"
+                        android:textSize="16dp" />
 
-    </TableRow>
+                    <ImageView
+                        android:id="@+id/add"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginTop="10dp"
+                        app:srcCompat="@drawable/ic_baseline_add_24" />
+                </LinearLayout>
 
-</LinearLayout>
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:drawableRight="@drawable/ic_cart"
+                    android:text="Add"
+                    app:layout_constraintEnd_toStartOf="@+id/button6a"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp">
+
+            </TableRow>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:background="?android:attr/listDivider" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView107"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reviews"
+                    android:textColor="#0017EA"
+                    android:textSize="18dp"/>
+            </TableRow>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:layout_marginStart="155dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="155dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/no" />
+
+                <TextView
+                    android:id="@+id/textView117"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="140dp"
+                    android:layout_marginTop="8dp"
+                    android:text="No Reviews...!"
+                    android:textColor="@color/black"
+                    android:textSize="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ListView
+                android:id="@+id/lvs"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#CC3434"
+        android:backgroundTint="#9C27B0"
+        android:clickable="true"
+        android:foreground="@drawable/ic_baseline_add_24"
+        android:theme="?attr/extendedFloatingActionButtonStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+<!--    tools:srcCompat="@drawable/ic_baseline_add_24"-->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+
+        android:orientation="vertical"
+<!--        tools:context=".product_details"></LinearLayout>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

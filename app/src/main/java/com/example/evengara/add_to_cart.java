@@ -110,6 +110,7 @@ public class add_to_cart extends AppCompatActivity implements View.OnClickListen
                 Map<String, String> params = new HashMap<>();
 
                 params.put("prdid", sh.getString("prdid",""));
+                params.put("type","product");
 
 
 
